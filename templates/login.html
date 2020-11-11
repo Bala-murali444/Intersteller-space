@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'stylesheet2.css' %}">
+</head>
+
+<body>
+    <div class="img"></div>
+    <div class="star star1"></div>
+    <div class="star star2"></div>
+    <div class="star star3"></div>
+    <div class="star star4"></div>
+    <div class="star star5"></div>
+    <div class="star star6"></div>
+    <div class="star star7"></div>
+    <div class="star star8"></div>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="register" method="post">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                {% csrf_token %}
+                <input type="text" placeholder="user name" id="frstname" name="username" />
+                <input type="email" placeholder="Email" id="email" name="email" />
+                <input type="password" placeholder="Password" id="paswrd" name="password" />
+                <input type="password" placeholder="Confirm Password" id="paswrd" name="password1"/>
+                <button>Sign Up</button>
+                {% for message in messages %}
+                <h6 style="color: white">{{message}}</h6>
+                {% endfor %}
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="login" method="post">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                {% csrf_token %}
+                <input type="text" placeholder="username" id="nme" name="username" />
+                <input type="password" placeholder="Password" id="psd" name="password" />
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+                {% for message in messages %}
+                <h6 style="color: white">{{message}}</h6>
+                {% endfor %}
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'log.js' %}"></script>
+</body>
+
+</html>
